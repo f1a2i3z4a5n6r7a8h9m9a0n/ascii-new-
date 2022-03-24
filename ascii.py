@@ -7,12 +7,17 @@ charArray = list(chars)
 charLength = len(charArray)
 interval = charLength/256
 
+scalefactor = 0.2
+
 def getChar(inputInt):
     return charArray[math.floor(inputInt*interval)]
 
 text_file = open("Output.txt", "w")
 
 im = Image.open("cran.png")
+
+width, height = im.size
+im = im.resize((int(scalefactor*width), int(scalefactor*height)), Image.NEAREST)
 width, height = im.size
 pix = im.load()
 
